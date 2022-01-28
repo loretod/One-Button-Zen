@@ -18,7 +18,7 @@ loadSound("pop", "/sounds/pop.ogg")
 
 //Game Variables- edit as needed to meet the player's skills
 // Score to reach
-WIN_SCORE = 2
+WIN_SCORE = 10
 // Seconds between when next food pellet spawns
 TARGET_SPAWN_TIMING = 4
 // Size of target- range from 
@@ -29,10 +29,13 @@ TARGET_TIME = 6
 SPAWN_SEAWEED = true
 // Size of fishe's bubble
 BUBBLE_SIZE = 20
+//Speed that bubble travels up
+BUBBLE_SPEED = 400
 // Music on (true) or off (false)
 MUSIC = true
 // Outline thickness of target and bubbles
 OUTLINE_SIZE = 4
+
 
 
 // new functions for the game
@@ -45,7 +48,7 @@ function spawnBubble(p) {
 			origin("center"),
 			color(192,192,192),
 			outline(OUTLINE_SIZE),
-			move(UP, 300),
+			move(UP, BUBBLE_SPEED),
 			cleanup(),
 			// strings here means a tag
 			"bubble",
@@ -144,7 +147,7 @@ onUpdate("fish", (p) => {
     if (score.value >= WIN_SCORE){
       score.pos.x = width()/2
       score.pos.y = height()/2
-      score.text = "You Win :-)"
+      score.text = "Yum! Thank you!"
       gravity(4000)
       p.jump()
       cleanup()
